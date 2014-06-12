@@ -1,10 +1,10 @@
 # This file should be:
 #  - Placed in the /etc/hadoop/conf directory
 #    - On the Namenode (and backups IE: HA, Failover, etc)
-#    - On the Job Tracker (and any Failover JT's) 
+#    - On the Job Tracker OR Resource Manager (and any Failover JT's/RM's) 
 # This file should be placed in the /etc/hadoop/conf directory.
 
-# Add Hostnames to this file. Format <hostname.fqdn> <rack_location>
+# Add Hostnames to this file. Format <host ip> <rack_location>
 192.168.2.10 01
 192.168.2.11 02
 192.168.2.12 03
