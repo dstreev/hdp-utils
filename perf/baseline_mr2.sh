@@ -23,14 +23,14 @@
 # 1TB across 1000 mappers with create 1G part files
 
 
-HDP_VER=2.2.0.2.0.6.0-76
+HDP_VER=2.4.0.2.1.3.0-563
 BASE_DIR=./perf
 # 1TB (1099511627776 bytes)/100 (bytes per record in Teragen)
-TB_ROW=10995116278
+TB_ROWS=10995116278
 
-# Make adjustments based on your cluster.
-TERAGEN_MAPPERS=10
-TERASORT_REDUCERS=4
+# Make adjustments based on your cluster. Containers * Nodes...
+TERAGEN_MAPPERS=5390
+TERASORT_REDUCERS=3000
 
 MR_EXAMPLES_JAR=/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples-$HDP_VER.jar
 
@@ -39,8 +39,8 @@ if [ ! -f $MR_EXAMPLES_JAR ]; then
 	exit -1
 fi
 
-# ROW_COUNT=$TB_ROWS
-ROW_COUNT=100000
+ROW_COUNT=$TB_ROWS
+#ROW_COUNT=100000
 
 hdfs dfs -mkdir $BASE_DIR
 
