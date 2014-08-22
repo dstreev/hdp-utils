@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Adjust/Add the property "topology.script.file.name"
+# Adjust/Add the property "net.topology.script.file.name"
 # to core-site.xml with the "absolute" path the this
 # file.  ENSURE the file is "executable".
 
@@ -15,7 +15,7 @@ CTL_FILE=${CTL_FILE:-"rack_topology.data"}
 HADOOP_CONF=${HADOOP_CONF:-"/etc/hadoop/conf"} 
 
 if [ ! -f ${HADOOP_CONF}/${CTL_FILE} ]; then
-  echo -n "/$RACK_PREFIX/rack "
+  echo -n "/$RACK_PREFIX/RackFileMissing "
   exit 0
 fi
 
