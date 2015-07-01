@@ -25,16 +25,18 @@ RETVAL=0
 HDP_PORTMAP_PID=/var/run/hadoop/root/hadoop-root-portmap.pid
 HDP_NFS3_PID=/var/run/hadoop/hdfs/hadoop-hdfs-nfs3.pid
 
+HADOOP_DAEMON_BIN=/usr/hdp/2.2.0.0-2041/hadoop/sbin/hadoop-daemon.sh
+
 case "$1" in
    start)
       echo "============================="
       echo "Starting hdp-hfs3..."
       echo "============================="
       echo "Starting Portmapper:"
-        /usr/lib/hadoop/sbin/hadoop-daemon.sh start portmap
+        $HADOOP_DAEMON_BIN start portmap
         sleep 2
       echo "Starting NFS3 Gateway:"
-        su - hdfs /usr/lib/hadoop/sbin/hadoop-daemon.sh start nfs3
+        su - hdfs $HADOOP_DAEMON_BIN start nfs3
         sleep 5
       ;;
 
@@ -43,9 +45,9 @@ case "$1" in
       echo "Shutting down hdp-nfs3..."
       echo "=================================="
       echo "Stopping NFS3 Gateway:"
-        su - hdfs /usr/lib/hadoop/sbin/hadoop-daemon.sh stop nfs3
+        su - hdfs $HADOOP_DAEMON_BIN stop nfs3
       echo "Stopping Portmapper:"
-        /usr/lib/hadoop/sbin/hadoop-daemon.sh stop portmap
+        $HADOOP_DAEMON_BIN stop portmap
         rm -f ${HDP_PORTMAP_PID} ${HDP_NFS3_PID}
       ;;
 
