@@ -21,7 +21,7 @@ while [ $# -gt 0 ]; do
   esac
 done
 
-if [ "${PDSH_GROUP} == "" ]; then
+if [ "${PDSH_GROUP}" == "" ]; then
       echo "Usage: $0 --group <pdsh group file>"
       exit -1
 fi
